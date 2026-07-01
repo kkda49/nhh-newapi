@@ -20,24 +20,18 @@ jobs:
         python-version: '3.10'
 
     - name: 安装依赖
-      run: |
-        pip install -r requirements.txt
-        playwright install chromium
-        playwright install-deps
+      run: pip install -r requirements.txt
 
     - name: 执行签到
       env:
         ACCOUNTS_JSON: ${{ secrets.ACCOUNTS_JSON }}
         NOTIFICATION_WEBHOOK: ${{ secrets.NOTIFICATION_WEBHOOK }}
-      run: |
-        python checkin_github_browser.py
+      run: python checkin_api.py
 
     - name: 上传日志
       if: always()
       uses: actions/upload-artifact@v4
       with:
         name: checkin-log-${{ github.run_number }}
-        path: |
-          checkin.log
-          checkin_*.png
+        path: checkin.log
         retention-days: 7

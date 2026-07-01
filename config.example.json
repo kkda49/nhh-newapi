@@ -1,0 +1,14 @@
+{
+  "accounts": [
+    {
+      "name": "主账号",
+      "base_url": "https://api.123nhh.com",
+      "access_token": "你的访问令牌(Authorization)",
+      "user_id": 1638
+    }
+  ],
+  "notification": {
+    "enabled": false,
+    "webhook_url": ""
+  }
+}
