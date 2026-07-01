@@ -15,11 +15,13 @@ from pathlib import Path
 
 
 class NewAPICheckin:
-    def __init__(self, base_url: str, session_token: str):
+    def __init__(self, base_url: str, session_token: str, user_id: str = None, b_user_id: str = None):
         """
         初始化签到客户端
         :param base_url: 网站基础URL，如 https://api.123nhh.com
         :param session_token: 登录后的 session token (从浏览器 Cookie 中获取)
+        :param user_id: 用户ID（用于 New-Api-User 请求头）
+        :param b_user_id: b-user-id Cookie 值
         """
         self.base_url = base_url.rstrip('/')
         self.session = requests.Session()
@@ -29,8 +31,13 @@ class NewAPICheckin:
             'Content-Type': 'application/json',
         })
 
-        # 设置 session token（可能是 Cookie 或 Authorization header）
-        # 需要根据实际情况调整
+        # 设置必需的请求头
+        if user_id:
+            self.session.headers['New-Api-User'] = str(user_id)
+
+        # 设置 Cookies
+        if b_user_id:
+            self.session.cookies.set('b-user-id', b_user_id, domain=self._get_domain())
         self.session.cookies.set('session', session_token, domain=self._get_domain())
 
     def _get_domain(self):
@@ -180,6 +187,8 @@ def main():
         name = account.get('name', 'Unknown')
         base_url = account.get('base_url')
         session_token = account.get('session_token')
+        user_id = account.get('user_id')
+        b_user_id = account.get('b_user_id')
 
         print(f"\n处理账号: {name}")
         print("-" * 50)
@@ -190,7 +199,7 @@ def main():
             continue
 
         try:
-            client = NewAPICheckin(base_url, session_token)
+            client = NewAPICheckin(base_url, session_token, user_id, b_user_id)
 
             # 验证登录状态
             login_ok, username, balance = client.get_user_info()
