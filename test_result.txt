@@ -10,10 +10,10 @@
    状态码: 200
 
 [成功] Token 有效！
-   响应数据: {'data': {'aff_code': 'eRyG', 'aff_count': 0, 'aff_history_quota': 0, 'aff_quota': 0, 'discord_id': '', 'display_name': 'Da49', 'email': '', 'github_id': '', 'group': 'default', 'id': 1638, 'inviter_id': 0, 'linux_do_id': '253797', 'oidc_id': '', 'permissions': {'sidebar_modules': {'admin': False}, 'sidebar_settings': True}, 'quota': 72685216, 'request_count': 82, 'role': 1, 'setting': '{"gotify_priority":0,"record_ip_log":true,"sidebar_modules":"{\\"chat\\":{\\"chat\\":true,\\"enabled\\":true,\\"playground\\":true},\\"console\\":{\\"detail\\":true,\\"enabled\\":true,\\"log\\":true,\\"midjourney\\":true,\\"task\\":true,\\"token\\":true},\\"personal\\":{\\"enabled\\":true,\\"personal\\":true,\\"topup\\":true}}"}', 'sidebar_modules': '{"chat":{"chat":true,"enabled":true,"playground":true},"console":{"detail":true,"enabled":true,"log":true,"midjourney":true,"task":true,"token":true},"personal":{"enabled":true,"personal":true,"topup":true}}', 'status': 1, 'stripe_customer': '', 'telegram_id': '', 'used_quota': 1731175, 'username': 'da49', 'wechat_id': ''}, 'message': '', 'success': True}
+   响应数据: {'data': {'aff_code': 'eRyG', 'aff_count': 0, 'aff_history_quota': 0, 'aff_quota': 0, 'discord_id': '', 'display_name': 'Da49', 'email': '', 'github_id': '', 'group': 'default', 'id': 1638, 'inviter_id': 0, 'linux_do_id': '253797', 'oidc_id': '', 'permissions': {'sidebar_modules': {'admin': False}, 'sidebar_settings': True}, 'quota': 66684200, 'request_count': 197, 'role': 1, 'setting': '{"gotify_priority":0,"record_ip_log":true,"sidebar_modules":"{\\"chat\\":{\\"chat\\":true,\\"enabled\\":true,\\"playground\\":true},\\"console\\":{\\"detail\\":true,\\"enabled\\":true,\\"log\\":true,\\"midjourney\\":true,\\"task\\":true,\\"token\\":true},\\"personal\\":{\\"enabled\\":true,\\"personal\\":true,\\"topup\\":true}}"}', 'sidebar_modules': '{"chat":{"chat":true,"enabled":true,"playground":true},"console":{"detail":true,"enabled":true,"log":true,"midjourney":true,"task":true,"token":true},"personal":{"enabled":true,"personal":true,"topup":true}}', 'status': 1, 'stripe_customer': '', 'telegram_id': '', 'used_quota': 7732191, 'username': 'da49', 'wechat_id': ''}, 'message': '', 'success': True}
 
 用户信息:
    用户名: da49
-   余额: $145.37
+   余额: $133.37
 
 ============================================================

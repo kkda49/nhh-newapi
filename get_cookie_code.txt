@@ -1,0 +1,1 @@
+copy(JSON.stringify({session: document.cookie.match(/session=([^;]+)/)?.[1] || '', b_user_id: document.cookie.match(/b-user-id=([^;]+)/)?.[1] || ''}))

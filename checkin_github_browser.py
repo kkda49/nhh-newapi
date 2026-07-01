@@ -107,23 +107,29 @@ class NewAPICheckinBrowser:
                 except:
                     pass
 
+                # 等待页面完全加载，按钮状态可能会从"加载中"变为"签到"
+                print("  → 等待页面完全加载...")
+                page.wait_for_timeout(5000)
+
                 # 查找签到按钮 - 尝试多种可能的选择器
                 button_selectors = [
-                    'button:has-text("加载中")',
                     'button:has-text("签到")',
-                    'div[role="button"]:has-text("加载中")',
+                    'button:has-text("加载中")',
                     'div[role="button"]:has-text("签到")',
+                    'div[role="button"]:has-text("加载中")',
                     '.checkin-button',
                     '[class*="check"] button',
+                    'button',  # 作为最后的fallback
                 ]
 
                 button = None
                 for selector in button_selectors:
                     try:
                         btn = page.locator(selector).first
-                        if btn.is_visible(timeout=1000):
+                        if btn.is_visible(timeout=2000):
                             button = btn
-                            print(f"  ✓ 找到签到按钮: {selector}")
+                            button_text = btn.inner_text()
+                            print(f"  ✓ 找到按钮: {selector}, 文本: {button_text}")
                             break
                     except:
                         continue
@@ -136,7 +142,7 @@ class NewAPICheckinBrowser:
                     return False, "未找到签到按钮", 0.0
 
                 # 点击签到按钮
-                print("  → 点击签到按钮...")
+                print("  → 点击按钮...")
                 button.click()
 
                 # 等待签到结果
@@ -256,6 +262,13 @@ def write_log(message: str):
 
 def main():
     """主函数"""
+    # 设置标准输出编码为 UTF-8
+    import sys
+    if sys.platform == 'win32':
+        import io
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
     print("=" * 50)
     print("New API 自动签到脚本 (GitHub Actions)")
     print(f"运行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
